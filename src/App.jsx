@@ -4,7 +4,7 @@ import { useState,useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 import authService from './Appwrite/Auth'
 
-import { login,logout } from './store/authSlice'
+import { login,logout } from './store/slice'
 import { Header,Footer } from './components/index'
 
 
