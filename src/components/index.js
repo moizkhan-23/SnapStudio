@@ -3,7 +3,7 @@
   import Logo from "./Logo";
   import Container from "./container/Container";
   import LogoutBtn from "./Header/LogoutBtn";
-  import Login from "./Login";
+  import ReEnter  from "./Login";
   import PostCard from "./PostCard";
   import Button from './Button'
   import Input from "./Input";
@@ -13,4 +13,4 @@
 import AuthLayout from './AuthLayout'
 import RTE from "./RTE";
 
-  export {Header,Footer,Logo,LogoutBtn, Container,Login,PostCard,Button,Input,Select,Signup,PostForm, AuthLayout,RTE}
+  export {Header,Footer,Logo,LogoutBtn, Container,ReEnter,PostCard,Button,Input,Select,Signup,PostForm, AuthLayout,RTE}

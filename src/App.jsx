@@ -27,15 +27,27 @@ function App() {
   }, [])
   
   return !loading ? (
-    <div className='min-h-screen flex flex-wrap content-between bg-gray-400'>
-      <div className='w-full block'>
-        <Header />
-        <main>
-          <Outlet />
-        </main>
-        <Footer />
-      </div>
-    </div>
+    <div className="flex flex-col min-h-screen bg-red-50">
+  <div className="w-full">
+    <Header />
+  </div>
+  <main className="flex-grow">
+    <Outlet />
+  </main>
+<div className="w-full">
+    <Footer />
+  </div>
+</div>
+
+    // <div className=' flex flex-wrap content-between bg-gray-400 '>
+    //   <div className='w-full block  '>
+    //     <Header />
+    //     <main>
+    //       <Outlet />
+    //     </main>
+    //     <Footer />
+    //   </div>
+    // </div>
   ) : "Loading"
 }
 

@@ -10,7 +10,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 // import Home from './pages/Home.jsx'
 import Home from './pages/Home.jsx'
 // import { AuthLayout, Login } from './components/index.js'
-import { AuthLayout, Login } from './components/index.js'
+import { AuthLayout, ReEnter } from './components/index.js'
 
 
 // import AddPost from "./pages/AddPost";
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
             path: "/login",
             element: (
                 <AuthLayout authentication={false}>
-                    <Login />
+                    <ReEnter />
                 </AuthLayout>
             ),
         },

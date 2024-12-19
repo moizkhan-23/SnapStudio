@@ -3,9 +3,15 @@ import React, {useEffect, useState} from 'react'
 import appwriteService from '../Appwrite/serivce'
 import {Container, PostCard} from '../components'
 // import service from '../Appwrite/serivce'
+import { useSelector } from 'react-redux'
 
 function Home() {
     const [posts, setPosts] = useState([])
+    const userName=useSelector((state)=>state.auth.userData)
+    // Query empty array getPosts([]) pass ho rahi hai.
+    // Kyunki array empty hai, koi query apply nahi ho rahi, toh Appwrite saare documents return kar raha hoga.
+    // Iska result hoga active + inactive dono status show karna.
+    
 
     useEffect(() => {
         appwriteService.getPosts().then((posts) => {
@@ -14,6 +20,8 @@ function Home() {
             }
         })
     }, [])
+    console.log(posts);
+    
   
     if (posts.length === 0) {
         return (
@@ -21,9 +29,11 @@ function Home() {
                 <Container>
                     <div className="flex flex-wrap">
                         <div className="p-2 w-full">
-                            <h1 className="text-2xl font-bold hover:text-gray-500">
-                                Login to read posts
-                            </h1>
+                       
+                        {
+                            userName && userName.name ? (<h1 className=' font-bold text-4xl'>{` Hello,${userName.name.toUpperCase()}`}</h1>) :(<h1 className='font-bold text-5xl'>You are not signed in.</h1>)
+                        }
+                        
                         </div>
                     </div>
                 </Container>
