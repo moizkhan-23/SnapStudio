@@ -1,0 +1,9 @@
+# Software License Agreement for (Your Project Name)
+
+This project is a derivative of the TinyMCE library, which is licensed under the terms of the [GNU General Public License Version 2 or later](http://www.gnu.org/licenses/gpl.html). The original library has been developed by Ephox Corporation DBA Tiny Technologies, Inc. [TinyMCE repository](https://github.com/tinymce/tinymce).
+
+The original library has been modified by (Your Name or Your Organization) with the following changes and additions:
+
+(Here list the modifications and additions you made to the library)
+
+All new code in this project is also licensed under [GNU General Public License Version 2 or later](http://www.gnu.org/licenses/gpl.html) by (Your Name or Your Organization).
