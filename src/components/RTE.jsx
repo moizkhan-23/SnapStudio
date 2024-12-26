@@ -7,6 +7,7 @@ export default function RTE({name, control, label, defaultValue =""}) {
     // nj01137y139salgxshw4m4jitb6f9iw21vrqlp9roqcm9eff
     // nj01137y139salgxshw4m4jitb6f9iw21vrqlp9roqcm9eff
     // <script src="https://cdn.tiny.cloud/1/nj01137y139salgxshw4m4jitb6f9iw21vrqlp9roqcm9eff/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+console.log(import.meta.env.VITE_TINYMCE_EDITOR);
 
 
   return (
@@ -19,7 +20,8 @@ export default function RTE({name, control, label, defaultValue =""}) {
     render={({field: {onChange}}) => (
         <Editor
         initialValue={defaultValue}
-         apiKey='nj01137y139salgxshw4m4jitb6f9iw21vrqlp9roqcm9eff'
+
+        apiKey={import.meta.env.VITE_TINYMCE_EDITOR}      
         init={{
             initialValue: defaultValue,
             height: 500,

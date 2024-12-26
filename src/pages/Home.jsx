@@ -5,6 +5,7 @@ import {Container, PostCard} from '../components'
 // import service from '../Appwrite/serivce'
 import { useSelector } from 'react-redux'
 
+
 function Home() {
     const [posts, setPosts] = useState([])
     const userName=useSelector((state)=>state.auth.userData)
@@ -12,11 +13,16 @@ function Home() {
     // Kyunki array empty hai, koi query apply nahi ho rahi, toh Appwrite saare documents return kar raha hoga.
     // Iska result hoga active + inactive dono status show karna.
     
+// console.log(userName);
+
+
+
 
     useEffect(() => {
         appwriteService.getPosts().then((posts) => {
             if (posts) {
                 setPosts(posts.documents)
+                
             }
         })
     }, [])
@@ -31,7 +37,7 @@ function Home() {
                         <div className="p-2 w-full">
                        
                         {
-                            userName && userName.name ? (<h1 className=' font-bold text-4xl'>{` Hello,${userName.name.toUpperCase()}`}</h1>) :(<h1 className='font-bold text-5xl'>You are not signed in.</h1>)
+                            userName && userName.name ? (<h1 className='mt-32 font-bold text-4xl'>{` Hello,${userName.name.toUpperCase()}`}</h1>) :(<h1 className='font-bold text-5xl'>You are not signed in.</h1>)
                         }
                         
                         </div>
