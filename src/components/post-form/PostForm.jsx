@@ -78,16 +78,18 @@ export default function PostForm({ post }) {
     }, [watch, slugTransform, setValue]);
 
     return (
-        <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
-            <div className="w-2/3 px-2">
+        <form onSubmit={handleSubmit(submit)} className="flex flex-col justify-center items-start  px-4 space-y-4 ">
+            
+            <div className="w-full  flex flex-col  items-start   space-y-2 sm:flex sm:justify-between sm:flex-row ">
+            <div className="w-1/2 mt-1 ">
                 <Input
-                    label="Title :"
+                    label="Title "
                     placeholder="Title"
                     className="mb-4"
                     {...register("title", { required: true })}
                 />
                 <Input
-                    label="Slug :"
+                    label="Slug "
                     placeholder="Slug"
                     className="mb-4"
                     {...register("slug", { required: true })}
@@ -95,11 +97,11 @@ export default function PostForm({ post }) {
                         setValue("slug", slugTransform(e.currentTarget.value), { shouldValidate: true });
                     }}
                 />
-                <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
-            </div>
-            <div className="w-1/3 px-2">
+                </div>
+              
+            <div className="w-1/2 sm:w-1/3 ">
                 <Input
-                    label="Featured Image :"
+                    label="Featured Image "
                     type="file"
                     className="mb-4"
                     accept="image/png, image/jpg, image/jpeg, image/gif"
@@ -117,13 +119,19 @@ export default function PostForm({ post }) {
                 <Select
                     options={["active", "inactive"]}
                     label="Status"
-                    className="mb-4"
+                    className="mb-4 bg-green "
                     {...register("status", { required: true })}
                 />
-                <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full">
-                    {post ? "Update" : "Submit"}
-                </Button>
+                <Button type="submit" bgColor={post ? 'bg-green-800' : undefined}  className="w-full bg-red-800">
+                    {post ? "Update" : "Submit"}</Button>
             </div>
+            </div>
+            <div className="w-1/2">
+                <RTE label="Content " name="content" control={control} defaultValue={getValues("content")} />
+
+            </div>
+
+          
         </form>
     );
 }

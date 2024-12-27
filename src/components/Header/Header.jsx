@@ -1,16 +1,40 @@
 
 import { Container, Logo, LogoutBtn } from "../index";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import authService from "../../Appwrite/Auth";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react"; // Added for toggling mobile menu
+import { useState,useEffect } from "react"; // Added for toggling mobile menu
 
 export default function Header() {
   const authStatus = useSelector((state) => state.auth.status);
   const navigate = useNavigate();
+  const location= useLocation()
+  console.log(location);
+  console.log(location.pathname);
+  
+  
 
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false); // State to manage mobile menu toggle
+
+  useEffect(() => {
+    // Disable scroll when toggle is true
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  
+    const closeMenu = () => setMobileMenuOpen(false);
+    window.addEventListener("click", closeMenu);
+  
+    return () => {
+      // Cleanup
+      document.body.style.overflow = "auto"; // Re-enable scroll on unmount
+      window.removeEventListener("click", closeMenu);
+    };
+  }, [isMobileMenuOpen]);
 
   const navItems = [
     { name: 'Home', slug: "/", active: true },
@@ -20,7 +44,8 @@ export default function Header() {
     { name: "Add Post", slug: "/add-post", active: authStatus },
   ];
 
-  const toggleMobileMenu = () => {
+  const toggleMobileMenu = (e) => {
+    e.stopPropagation();
     setMobileMenuOpen(!isMobileMenuOpen); // Toggle the mobile menu state
   };
   // #600c08
@@ -29,7 +54,23 @@ export default function Header() {
       <Container>
         <nav className='flex justify-between items-center  w-[80%] mx-auto'>
           <div className='mr-4'>
-           <h1 className="inline-block text-4xl font-bold text-white duration-500 hover:text-yellow-300 hover:shadow-xl hover:rotate-6 hover:scale-125">SnapStudio</h1>
+           {/* <h1 className="inline-block space-x-2 text-4xl font-bold text-white duration-500 hover:text-yellow-300 hover:shadow-xl hover:rotate-6 hover:scale-125">
+            
+            <span className="text-yellow-600
+           ">Snap</span><span className="text-black">Studio</span> </h1> */}
+   
+
+
+
+   <h1 className="inline-block space-x-1 text-3xl sm:text-4xl font-bold text-white duration-500 hover:text-yellow-300 hover:shadow-xl hover:rotate-4 hover:scale-125 cursor-pointer">
+  
+    <span className="text-gradient bg-gradient-to-r from-yellow-400 via-red-500 to-yellow-600 text-transparent bg-clip-text">Snap</span>
+    <span className="text-gradient bg-gradient-to-r from-red-400 via-yellow-500 to-red-600 text-transparent bg-clip-text">Studio</span>
+</h1>
+
+
+
+
           </div>
 
           {/* Desktop Navigation */}
@@ -39,8 +80,8 @@ export default function Header() {
                 <li key={item.name}>
                   <button
                     onClick={() => navigate(item.slug)}
-                    className='inline-block px-4 py-2 duration-200 hover:bg-black hover:text-yellow-300 rounded-full hover:scale-75'
-                  >
+                    className={`inline-block px-4 py-2 duration-200  hover:text-yellow-300 rounded-full hover:scale-75'
+                  ${location.pathname === item.slug ? 'text-yellow-400' : 'text-white'}`}>
                     {item.name}
                   </button>
                 </li>
@@ -82,20 +123,22 @@ export default function Header() {
           style={{backgroundColor:'#8b1a12'}}
         >
           <div>
-          <h1 className="inline-block text-4xl  font-bold  duration-500 hover:text-yellow-200 text-gray-300 hover:shadow-xl pl-6 mt-3  hover:rotate-6 hover:scale-125">SnapStudio</h1>
+        
+   <h1 className=" inline-block  pl-6  mt-3 space-x-1 text-3xl sm:text-4xl font-bold text-white duration-500 hover:text-yellow-300 hover:shadow-xl hover:rotate-4 hover:scale-125 cursor-pointer">
+  
+  <span className="text-gradient bg-gradient-to-r from-yellow-400 via-red-500 to-yellow-600 text-transparent bg-clip-text">Snap</span>
+  <span className="text-gradient bg-gradient-to-r from-red-400 via-yellow-500 to-red-600 text-transparent bg-clip-text">Studio</span>
+</h1>
           </div>
            
           <ul className="pt-0 pl-6 mt-6 text-white text-2xl ">
-            {navItems.map((item) =>
+          {navItems.map((item) =>
               item.active ? (
                 <li key={item.name}>
                   <button
-                    onClick={() => {
-                      navigate(item.slug);
-                      setMobileMenuOpen(false);
-                    }}
-                    className='block px-6 py-2 my-2 duration-200 hover:bg-blue-100 rounded-full'
-                  >
+                    onClick={() => navigate(item.slug)}
+                    className={`inline-block px-4 py-2 duration-200  hover:text-yellow-300 rounded-full hover:scale-75'
+                  ${location.pathname === item.slug ? 'text-yellow-400' : 'text-white'}`}>
                     {item.name}
                   </button>
                 </li>
@@ -107,6 +150,9 @@ export default function Header() {
               </li>
             )}
           </ul>
+
+          <p className="absolute left-0 bottom-5 hover:text-yellow-300 duration-500 px-2 text-white"> &copy; 2025 Moizkhan-23 . All rights reserved.</p>
+         
         </div>
         </div>
       </Container>

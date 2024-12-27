@@ -48,7 +48,9 @@ function App() {
     //     <Footer />
     //   </div>
     // </div>
-  ) : "Loading"
+  ) : <span className='ml-6 mb-5'> 
+
+Loading...</span>
 }
 
 export default App

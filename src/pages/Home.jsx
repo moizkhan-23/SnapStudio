@@ -37,7 +37,7 @@ function Home() {
                         <div className="p-2 w-full">
                        
                         {
-                            userName && userName.name ? (<h1 className='mt-32 font-bold text-4xl'>{` Hello,${userName.name.toUpperCase()}`}</h1>) :(<h1 className='font-bold text-5xl'>You are not signed in.</h1>)
+                            userName && userName.name ? (<h1 className='mt-32 font-bold text-4xl text-gradient bg-gradient-to-r from-yellow-400 via-red-500 to-yellow-800 text-transparent bg-clip-text'>{` Hello,${userName.name.toUpperCase()}`}</h1>) :(<h1 className='font-bold text-5xl'>You are not signed in.</h1>)
                         }
                         
                         </div>

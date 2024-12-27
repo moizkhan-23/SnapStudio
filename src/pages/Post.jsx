@@ -34,34 +34,39 @@ export default function Post() {
     };
 
     return post ? (
-        <div className="py-8">
+        <div className="py-8 ">
+            
             <Container>
-                <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
+                <div className="w-full flex justify-center mb-4 relative  rounded-xl p-2">
                     <img
                         src={appwriteService.getFilePreview(post.featuredImage)}
                         alt={post.title}
                         className="rounded-xl"
                     />
-
-                    {isAuthor && (
+                       
+               
+                     {isAuthor && (
                         <div className="absolute right-6 top-6">
                             <Link to={`/edit-post/${post.$id}`}>
-                                <Button bgColor="bg-green-500" className="mr-3">
+                                <Button bgColor="bg-green-500" className="mr-3 bg-green-700 hover:bg-green-600">
                                     Edit
                                 </Button>
                             </Link>
-                            <Button bgColor="bg-red-500" onClick={deletePost}>
+                            <Button bgColor="bg-red-500" onClick={deletePost} className="mr-3 bg-red-800 hover:bg-red-700">
                                 Delete
                             </Button>
                         </div>
                     )}
-                </div>
-                <div className="w-full mb-6">
+                     </div>
+
+                <div className=" flex justify-center items-center flex-col ">
+                <div className=" mb-6 ">
                     <h1 className="text-2xl font-bold">{post.title}</h1>
                 </div>
                 <div className="browser-css">
                     {parse(post.content)}
-                    </div>
+                </div>
+                </div>
             </Container>
         </div>
     ) : null;

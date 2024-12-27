@@ -28,7 +28,7 @@ function Login() {
 
   return (
     <div
-    className='flex items-center justify-center w-full py-10'
+    className='flex items-center justify-center sm:w-full w-72 mx-auto py-10'
     >
         <div className={`mx-auto w-full max-w-sm bg-gray-100 rounded-xl p-10 border border-black/10`}>
         {/* <div className="mb-2 flex justify-center">
@@ -36,7 +36,7 @@ function Login() {
                         <Logo width="100%" />
                     </span>
         </div> */}
-        <h2 className="text-center text-2xl font-bold leading-tight">Sign in to your account</h2>
+        <h2 className="text-center text-2xl font-bold leading-tight text-gray-950">Sign in to your account</h2>
         <p className="mt-2 text-center text-base text-black/60">
                     Don&apos;t have any account?&nbsp;
                     <Link
@@ -71,7 +71,7 @@ function Login() {
                 />
                 <Button
                 type="submit"
-                className="w-full"
+                className="w-full bg-red-800"
                 >Log in</Button>
             </div>
         </form>

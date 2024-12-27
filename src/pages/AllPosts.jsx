@@ -26,7 +26,7 @@ function AllPosts() {
                     </div>
                 ))}
             </div>
-            <div className='w-full  text-5xl font-bold text-center mt-20 '>
+            <div className='w-full  text-5xl font-bold text-gray-400 text-center mt-20 '>
             {posts.length == 0  && 'Post not available'}
 </div>
            
