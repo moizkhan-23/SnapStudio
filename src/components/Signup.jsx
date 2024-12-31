@@ -28,14 +28,14 @@ function Signup() {
 
   return (
     <div className="flex items-center justify-center ">
-            <div className={`mx-auto w-full max-w-sm  bg-gray-100 rounded-xl p-10 border border-black/10`}>
+            <div className={`mx-auto  md:w-full w-[335px]  md:max-w-sm   bg-gray-100 rounded-xl p-10 border border-black/10`}>
             <div className="mb-2 flex justify-center ">
                     <span className="inline-block w-full max-w-[100px]">
                     {/* LOgo */}
                     
                     </span>
                 </div>
-                <h2 className="text-center text-2xl font-bold leading-tight  text-gray-950">Sign up to create account</h2>
+                <h2 className="text-center text-2xl font-bold leading-tight  text-gray-800">Sign up to create account</h2>
                 <p className="mt-2 text-center text-base text-black/60">
                     Already have an account?&nbsp;
                     <Link
@@ -50,14 +50,14 @@ function Signup() {
                 <form onSubmit={handleSubmit(create)}>
                     <div className='space-y-5'>
                         <Input
-                        label="Full Name: "
+                        label="Full Name "
                         placeholder="Enter your full name"
                         {...register("name", {
                             required: true,
                         })}
                         />
                         <Input
-                        label="Email: "
+                        label="Email "
                         placeholder="Enter your email"
                         type="email"
                         {...register("email", {
@@ -69,7 +69,7 @@ function Signup() {
                         })}
                         />
                         <Input
-                        label="Password: "
+                        label="Password "
                         type="password"
                         placeholder="Enter your password"
                         {...register("password", {

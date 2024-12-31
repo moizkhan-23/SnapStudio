@@ -19,19 +19,23 @@ function Home() {
 
 
     useEffect(() => {
-        appwriteService.getPosts().then((posts) => {
+        if(userName?.$id){
+        appwriteService.getPosts(userName.$id,true).then((posts) => {
             if (posts) {
                 setPosts(posts.documents)
                 
             }
         })
-    }, [])
-    console.log(posts);
+    }else {
+        setPosts([]); // Clear posts or handle the UI for logged-out state
+    }
+    }, [userName])
+    
     
   
     if (posts.length === 0) {
         return (
-            <div className="w-full py-8 mt-4 text-center">
+            <div className="w-full py-8 mt-4 text-center ">
                 <Container>
                     <div className="flex flex-wrap">
                         <div className="p-2 w-full">

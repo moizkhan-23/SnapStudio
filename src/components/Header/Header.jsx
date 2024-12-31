@@ -11,8 +11,7 @@ export default function Header() {
   const authStatus = useSelector((state) => state.auth.status);
   const navigate = useNavigate();
   const location= useLocation()
-  console.log(location);
-  console.log(location.pathname);
+ 
   
   
 
@@ -101,13 +100,13 @@ export default function Header() {
               onClick={toggleMobileMenu}
               className="text-white text-2xl"
             >
-              <i class="fa-solid fa-bars"></i>
+              <i className="fa-solid fa-bars"></i>
               
             </button>  :  <button
               onClick={toggleMobileMenu}
               className="text-white text-2xl "
             >
-           <i class="fa-solid fa-xmark"></i>
+           <i className="fa-solid fa-xmark"></i>
               
             </button> }
           </div>

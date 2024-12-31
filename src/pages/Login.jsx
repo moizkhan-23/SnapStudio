@@ -5,7 +5,7 @@ import {  ReEnter } from "../components"
 
 function Login() {
   return (
-    <div className='py-80  w-1 mx-auto sm:w-full '>
+    <div className='py-80    '>
 <ReEnter></ReEnter>
     </div>
   )

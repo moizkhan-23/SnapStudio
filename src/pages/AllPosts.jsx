@@ -5,17 +5,25 @@ import { Container } from '../components'
 import appwriteService from '../Appwrite/serivce'
 import PostCard from '../components/PostCard'
 import { use } from 'react'
+import { useSelector } from 'react-redux'
+
 
 function AllPosts() {
     const [posts, setPosts] = useState([])
-    // useEffect(() => {}, []) 
+    const userName=useSelector((state)=>state.auth.userData)
+    useEffect(() => {
+        if(userName?.$id){ 
   
-    appwriteService.getPosts([]).then((posts) => {
+    appwriteService.getPosts(userName.$id,false).then((posts) => {
         if (posts) {
             setPosts(posts.documents)
         }
     })
-
+}else {
+    // Optionally, clear posts if user is logged out
+    setPosts([]); // Clear posts or handle the UI for logged-out state
+}
+}, [userName])
   return (
     <div className='w-full py-8'>
         <Container>

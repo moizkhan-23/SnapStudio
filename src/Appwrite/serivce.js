@@ -81,20 +81,43 @@ export class Service{
         }
     }
 
-    async getPosts(queries = [Query.equal("status", "active")]){
+
+    async getPosts(userId,myStatus) {
         try {
+            const queries = [
+               
+                Query.equal("userId", userId)
+];
+
+if(myStatus){
+    queries.push(Query.equal("status", "active"));
+
+}
+    
             return await this.databases.listDocuments(
                 conf.appwriteDataBaseId,
                 conf.appwriteCollectionId,
-                queries,
-                
-
-            )
+                queries
+            );
         } catch (error) {
-            console.log("Appwrite serive :: getPosts :: error", error);
-            // return false
+            console.log("Appwrite service :: getPosts :: error", error);
         }
     }
+
+    // async getPosts(queries = [Query.equal("status", "active"),Query.equal('userId',userId)]){
+    //     try {
+    //         return await this.databases.listDocuments(
+    //             conf.appwriteDataBaseId,
+    //             conf.appwriteCollectionId,
+    //             queries,
+                
+
+    //         )
+    //     } catch (error) {
+    //         console.log("Appwrite serive :: getPosts :: error", error);
+    //         // return false
+    //     }
+    // }
 
     // file upload service
 
@@ -103,7 +126,8 @@ export class Service{
             return await this.bucket.createFile(
                 conf.appwriteBucketId,
                 ID.unique(),
-                file
+                file,
+                
             )
         } catch (error) {
             console.log("Appwrite serive :: uploadFile :: error", error);

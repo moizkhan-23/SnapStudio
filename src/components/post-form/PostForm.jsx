@@ -15,11 +15,14 @@ export default function PostForm({ post }) {
             status: post?.status || "active",
         },
     });
-    console.log(post +'hello');
+    
     
 
     const navigate = useNavigate();
     const userData = useSelector((state) => state.auth.userData);
+   
+    
+    
 
     const submit = async (data) => {
         console.log("iam ");
@@ -43,10 +46,17 @@ export default function PostForm({ post }) {
             }
         } else {
             const file = await appwriteService.uploadFile(data.image[0]);
+          
+            
+            
 
             if (file) {
+             
+                
                 const fileId = file.$id;
                 data.featuredImage = fileId;
+               
+                
                 const dbPost = await appwriteService.createPost({ ...data, userId: userData.$id });
 
                 if (dbPost) {
@@ -81,7 +91,7 @@ export default function PostForm({ post }) {
         <form onSubmit={handleSubmit(submit)} className="flex flex-col justify-center items-start  px-4 space-y-4 ">
             
             <div className="w-full  flex flex-col  items-start   space-y-2 sm:flex sm:justify-between sm:flex-row ">
-            <div className="w-1/2 mt-1 ">
+            <div className="sm:w-1/2 w-full mt-1 ">
                 <Input
                     label="Title "
                     placeholder="Title"
@@ -99,7 +109,7 @@ export default function PostForm({ post }) {
                 />
                 </div>
               
-            <div className="w-1/2 sm:w-1/3 ">
+            <div className="w-full sm:w-1/3 ">
                 <Input
                     label="Featured Image "
                     type="file"
@@ -122,11 +132,11 @@ export default function PostForm({ post }) {
                     className="mb-4 bg-green "
                     {...register("status", { required: true })}
                 />
-                <Button type="submit" bgColor={post ? 'bg-green-800' : undefined}  className="w-full bg-red-800">
+                <Button type="submit" bgColor={post && 'bg-green-700'}  className="w-full">
                     {post ? "Update" : "Submit"}</Button>
             </div>
             </div>
-            <div className="w-1/2">
+            <div className="sm:w-1/2 w-full">
                 <RTE label="Content " name="content" control={control} defaultValue={getValues("content")} />
 
             </div>
